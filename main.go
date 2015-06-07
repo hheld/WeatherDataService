@@ -77,7 +77,7 @@ func getDataFromDb(quantity string, from, to int64) WeatherData {
 func main() {
 	defer db.Close()
 
-	http.Handle("/wdrf", http.StripPrefix("/wdrf/", http.FileServer(http.Dir("dist"))))
+	http.Handle("/wdrf/", http.StripPrefix("/wdrf/", http.FileServer(http.Dir("dist"))))
 	http.HandleFunc("/wdrf/api/", getWeatherData)
 
 	log.Fatal(http.ListenAndServe(":9090", nil))
