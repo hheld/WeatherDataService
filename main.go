@@ -12,11 +12,11 @@ import (
 )
 
 var db, _ = sql.Open("sqlite3", "./weewx.sdb")
-const timeFormat = "2006-01-02T15:04:05"
+const timeFormat = "Mon Jan 02 2006 15:04:05 GMT 0200 (CET)"
 
 type WeatherData struct {
-	TimePoints []time.Time
-	DataPoints []float64
+	TimePoints []time.Time `json:"timePoints"`
+	DataPoints []float64 `json:"dataPoints"`
 }
 
 func getWeatherData(w http.ResponseWriter, r *http.Request) {
@@ -36,6 +36,8 @@ func getWeatherData(w http.ResponseWriter, r *http.Request) {
 	}
 
 	weatherData := getDataFromDb(quantity, fromTime, toTime)
+	log.Println(weatherData)
+	log.Printf("from: %d; to: %d", fromTime, toTime)
 
 	b, err := json.Marshal(weatherData)
 
