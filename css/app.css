@@ -1,0 +1,8 @@
+body {
+    background-color: #6f6f76;
+}
+
+.overlay {
+    fill: none;
+    pointer-events: all;
+}

@@ -9,10 +9,11 @@ import (
 	"log"
 	"net/http"
 	"time"
+	"strconv"
 )
 
 var db, _ = sql.Open("sqlite3", "./weewx.sdb")
-const timeFormat = "Mon Jan 02 2006 15:04:05 GMT 0200 (CET)"
+const timeFormat = time.RFC3339
 
 type WeatherData struct {
 	TimePoints []time.Time `json:"timePoints"`
@@ -36,8 +37,6 @@ func getWeatherData(w http.ResponseWriter, r *http.Request) {
 	}
 
 	weatherData := getDataFromDb(quantity, fromTime, toTime)
-	log.Println(weatherData)
-	log.Printf("from: %d; to: %d", fromTime, toTime)
 
 	b, err := json.Marshal(weatherData)
 
@@ -63,10 +62,18 @@ func getDataFromDb(quantity string, from, to int64) WeatherData {
 
 	for rows.Next() {
 		var dateTimeValue int64
+		var quantityValueStr sql.NullString
 		var quantityValue float64
 
-		if err := rows.Scan(&dateTimeValue, &quantityValue); err != nil {
-			log.Fatal(err)
+		if err := rows.Scan(&dateTimeValue, &quantityValueStr); err != nil {
+			msg := fmt.Sprintf("Error interpreting data from the database for quantity %s: %s", quantity, err)
+			log.Fatal(msg)
+		}
+
+		if quantityValueStr.Valid == false {
+			quantityValue = 0.0
+		} else {
+			quantityValue, _ = strconv.ParseFloat(quantityValueStr.String, 64)
 		}
 
 		timePoints = append(timePoints, time.Unix(dateTimeValue, 0))
