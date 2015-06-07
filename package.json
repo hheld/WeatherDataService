@@ -26,18 +26,14 @@
     "watchify": "^2.6.0"
   },
   "dependencies": {
-    "compression": "^1.4.3",
     "d3": "^3.5.5",
     "dygraphs": "^1.1.0",
-    "express": "^4.12.3",
     "flux": "^2.0.1",
     "immutable": "^3.7.0",
     "keymirror": "^0.1.1",
-    "morgan": "^1.5.2",
     "object-assign": "^2.0.0",
     "radium": "^0.10.1",
     "react": "^0.13.1",
-    "simple-ajax": "^2.0.0",
-    "sqlite3": "^3.0.5"
+    "simple-ajax": "^2.0.0"
   }
 }
