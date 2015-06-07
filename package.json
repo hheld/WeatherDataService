@@ -1,0 +1,43 @@
+{
+  "name": "WeatherData",
+  "version": "1.0.0",
+  "description": "Displaying weather data from a weewx database.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "."
+  },
+  "keywords": [
+    "weather"
+  ],
+  "author": "Harald Held",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^9.0.3",
+    "gulp": "^3.8.11",
+    "gulp-html-replace": "^1.4.4",
+    "gulp-streamify": "0.0.5",
+    "gulp-uglify": "^1.1.0",
+    "reactify": "^1.1.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^2.6.0"
+  },
+  "dependencies": {
+    "compression": "^1.4.3",
+    "d3": "^3.5.5",
+    "dygraphs": "^1.1.0",
+    "express": "^4.12.3",
+    "flux": "^2.0.1",
+    "immutable": "^3.7.0",
+    "keymirror": "^0.1.1",
+    "morgan": "^1.5.2",
+    "object-assign": "^2.0.0",
+    "radium": "^0.10.1",
+    "react": "^0.13.1",
+    "simple-ajax": "^2.0.0",
+    "sqlite3": "^3.0.5"
+  }
+}

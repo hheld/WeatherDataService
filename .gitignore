@@ -1,1 +1,4 @@
 WeatherDataService
+css/
+dist/
+node_modules/
