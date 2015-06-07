@@ -71,7 +71,7 @@ func getDataFromDb(quantity string, from, to int64) WeatherData {
 		}
 
 		if quantityValueStr.Valid == false {
-			quantityValue = 0.0
+			continue
 		} else {
 			quantityValue, _ = strconv.ParseFloat(quantityValueStr.String, 64)
 		}
