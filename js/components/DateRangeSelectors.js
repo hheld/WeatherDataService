@@ -46,11 +46,13 @@ var DateRangeSelectors = React.createClass({
     },
 
     _onFromChanged: function(event) {
-        this.props.fromChangeHandler(event.target.value);
+        var newFromDate = new Date(event.target.value);
+        this.props.fromChangeHandler(newFromDate.getTime() + newFromDate.getTimezoneOffset() * 60 * 1000);
     },
 
     _onToChanged: function(event) {
-        this.props.toChangeHandler(event.target.value);
+        var newToDate = new Date(event.target.value);
+        this.props.toChangeHandler(newToDate.getTime() + newToDate.getTimezoneOffset() * 60 * 1000);
     },
 
     _onAutoUpdateChanged: function() {
