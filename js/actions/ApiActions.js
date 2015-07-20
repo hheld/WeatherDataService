@@ -15,6 +15,12 @@ var ApiActions = {
             });
         }, function(error) {
             console.log('There was an error getting weather data for "' + datum + '": ' + error);
+            AppDispatcher.handleApiAction({
+                actionType: AppConstants.API_CALL,
+                data: null,
+                datum: datum,
+                conversionFunc: conversionFunc
+            });
         });
 
         AppDispatcher.handleApiAction({

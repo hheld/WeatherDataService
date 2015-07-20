@@ -124,7 +124,7 @@ AppStore.dispatcherToken = AppDispatcher.register(function(payload) {
 
     switch(action.actionType) {
         case AppConstants.API_CALL:
-            if(action.data.dataPoints.length!==0) {
+            if(action.data && action.data.dataPoints.length!==0) {
                 setData(action.datum, action.data, action.conversionFunc);
             }
 
